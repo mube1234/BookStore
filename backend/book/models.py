@@ -4,6 +4,7 @@ class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
     description = models.TextField(blank=True, null=True)
     cover = models.ImageField(upload_to='files/', blank=True, null=True)
+    created_date = models.DateTimeField(auto_now_add=True,blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -15,6 +16,7 @@ class Book(models.Model):
     description = models.TextField()
     cover_image = models.ImageField(upload_to='files/')
     book_file = models.FileField(upload_to='files/')  
+    created_at = models.DateTimeField(auto_now_add=True,blank=True, null=True)
 
     def __str__(self):
         return self.title

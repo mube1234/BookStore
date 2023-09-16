@@ -16,7 +16,7 @@ def category_list(request):
     List all categories or create a new category.
     """
     if request.method == 'GET':
-        categories = Category.objects.all()
+        categories = Category.objects.all().order_by('-created_date')
         serializer = CategorySerializer(categories, many=True)
         return Response(serializer.data)
 
@@ -58,7 +58,7 @@ def book_list(request):
     List all books or create a new book.
     """
     if request.method == 'GET':
-        books = Book.objects.all()
+        books = Book.objects.all().order_by('-created_at')
         serializer = BookSerializer(books, many=True)
         return Response(serializer.data)
 
